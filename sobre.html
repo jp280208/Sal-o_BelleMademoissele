@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Mim | Belle Mademoissele</title> 
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="https://png.pngtree.com/png-vector/20230322/ourlarge/pngtree-golden-luxury-logo-monogram-initial-letter-b-golden-decorative-royal-vector-png-image_50502028.jpg" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- RESET GERAL --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        
+        :root {
+            --bg-body: #080808;      /* Preto Profundo */
+            --bg-panel: #111111;      /* Cinza Quase Preto */
+            --text-gold: #D4AF37;     /* Dourado Metálico */
+            --text-white: #FFFFFF;
+            --text-grey: #888888;
+            --whatsapp-green: #25D366;
+            --whatsapp-hover: #128C7E;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-white);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-white);
+            font-weight: 400;
+        }
+
+        a { text-decoration: none; transition: all 0.3s ease; }
+        ul { list-style: none; }
+        img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        /* --- CLASSES UTILITÁRIAS --- */
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 90px 0; }
+        .text-center { text-align: center; }
+        
+        /* --- BOTÕES (Idênticos ao Site) --- */
+        .btn-whatsapp-hero {
+            background-color: var(--whatsapp-green);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            padding: 15px 35px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
+        }
+        .btn-whatsapp-hero:hover {
+            background-color: var(--whatsapp-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-gold-outline {
+            border: 1px solid var(--text-gold);
+            color: var(--text-gold);
+            padding: 12px 30px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            background: transparent;
+            cursor: pointer;
+        }
+        .btn-gold-outline:hover {
+            background-color: var(--text-gold);
+            color: #000;
+        }
+
+        /* --- [HEADER CORRIGIDO] --- */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 0; /* <-- Padding ajustado */
+            background: transparent;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-container { 
+            display: flex;
+            align-items: center;
+            gap: 20px; 
+        }
+        .logo-container img { 
+            height: 120px; 
+            width: auto;
+            object-fit: contain; 
+            display: block;
+        }
+        .logo-text { 
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem; 
+            color: var(--text-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        /* --- Fim [LOGO CSS] --- */
+        .nav-menu { display: flex; gap: 30px; }
+        .nav-menu a {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+        .nav-menu a:hover { color: var(--text-gold); }
+        .mobile-toggle { display: none; color: var(--text-gold); font-size: 1.5rem; cursor: pointer; }
+
+        /* --- (Estilos Intro, Services Omitidos por Brevidade) --- */
+        
+        .intro-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background-color: var(--bg-body);
+        }
+        .intro-text {
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .intro-text h2 {
+            color: var(--text-gold);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .intro-text .btn-whatsapp-hero,
+        .intro-text .btn-gold-outline {
+            margin-top: 25px; 
+        }
+        
+        .services-section { background-color: var(--bg-panel); }
+        .section-header { margin-bottom: 60px; text-align: center; }
+        .section-header h2 { font-size: 2.5rem; color: var(--text-gold); margin-bottom: 10px; }
+        .services-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        /* --- FOOTER (Réplica) --- */
+        footer {
+            background-color: #050505;
+            border-top: 1px solid #1a1a1a;
+            padding-top: 70px;
+        }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            max-width: 1140px;
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
+        }
+        .footer-col h4 {
+            color: var(--text-gold);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        .footer-col p, .footer-col li a {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .footer-col li a:hover { color: var(--text-gold); }
+        
+        /* --- Estilo para o Botão Instagram no Rodapé --- */
+        .btn-instagram-footer {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: var(--text-gold);
+            color: #000;
+            border: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .btn-instagram-footer i {
+            margin-right: 8px;
+        }
+        .btn-instagram-footer:hover {
+            background-color: #c9a433; 
+            color: #000;
+        }
+        
+        .copyright {
+            background-color: #000;
+            border-top: 1px solid #111;
+            padding: 20px;
+            text-align: center;
+            color: #444;
+            font-size: 0.8rem;
+        }
+
+        /* --- WHATSAPP FLUTUANTE --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp-green);
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            z-index: 2000;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+
+        /* --- BANNER DE SUBPÁGINA --- */
+        .subpage-banner {
+            height: 40vh; 
+            min-height: 250px;
+            width: 100%;
+            position: relative;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+                        url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1974&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 60px; 
+        }
+        .subpage-banner h1 {
+            font-size: 3rem;
+            color: var(--text-gold);
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- CONTEÚDO PÁGINA 'SOBRE' (COM CORREÇÃO DO QUADRADO) --- */
+        .about-me-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center; 
+        }
+        .about-me-content .about-image {
+            width: 100%; 
+            padding-bottom: 100%; 
+            position: relative; 
+            overflow: hidden; 
+            border: 2px solid var(--text-gold); 
+        }
+        
+        .about-me-content .about-image img {
+            position: absolute; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            object-position: top center; 
+        }
+        
+        .about-me-content .intro-text {
+            align-items: flex-start; 
+            text-align: left; 
+            padding: 0; 
+        }
+        .about-me-content .intro-text h2 {
+            font-size: 2.2rem; 
+            color: var(--text-gold);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr; 
+            gap: 50px;
+        }
+
+        /* --- RESPONSIVO --- */
+        @media (max-width: 992px) {
+            .intro-section, .intro-section.reverse { grid-template-columns: 1fr; }
+            .intro-text { padding: 60px 20px; text-align: center; align-items: center; }
+            
+            .nav-menu {
+                position: absolute;
+                top: 80px; 
+                left: 0;
+                width: 100%;
+                background: #000;
+                flex-direction: column;
+                padding: 30px;
+                display: none;
+                text-align: center;
+                border-bottom: 1px solid #333;
+            }
+            .nav-menu.active { display: flex; }
+            .mobile-toggle { display: block; }
+
+            .subpage-banner h1 { font-size: 2.5rem; }
+            .about-me-content { grid-template-columns: 1fr; } 
+            .about-me-content .intro-text { 
+                order: 2; 
+                padding: 40px 0 0 0; 
+                text-align: center; 
+                align-items: center; 
+            }
+            .about-me-content .about-image { 
+                order: 1; 
+                margin: 0 auto; 
+                width: 80%; 
+                padding-bottom: 80%; 
+            }
+            
+            .contact-grid { grid-template-columns: 1fr; }
+            .contact-info { margin-top: 40px; }
+
+            /* --- [LOGO CSS] Responsivo --- */
+            .logo-container img {
+                height: 90px; 
+            }
+            .logo-container .logo-text {
+                font-size: 1.5rem; 
+            }
+            /* --- Fim [LOGO CSS] --- */
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/5518997546622" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo-container">
+                <img src="logo.png" alt="Logo Belle Mademoissele"> 
+                <div class="logo-text">Belle Mademoissele</div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="sobre.html">Sobre Mim</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="subpage-banner">
+        <h1>Sobre Mim</h1>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="about-me-content">
+                
+                <div class="about-image">
+                    <img src="img3.jpg" alt="Retrato Belle Mademoissele">
+                </div>
+                
+                <div class="intro-text">
+                    <h2>Minha História & Filosofia</h2>
+                    <p>Desde jovem, eu soube que minha vocação era realçar a beleza. O <strong>Belle Mademoissele</strong> não é apenas um negócio; é a materialização de um sonho. Aqui, cada detalhe foi pensado para criar uma atmosfera de luxo e acolhimento, onde a técnica e a arte se encontram para criar resultados únicos.</p>
+                    <p>Minha filosofia é que a verdadeira beleza vem de dentro, e o meu papel é apenas revelá-la. Eu acredito em um atendimento ultra-personalizado, ouvindo atentamente os desejos de cada cliente e traduzindo sua personalidade em um visual autêntico, sofisticado e que eleve sua autoestima.</p>
+                    
+                    <p>Ética e profissionalismo são os principais lemas da minha carreira. Sempre trabalhando com os melhores produtos e buscando conhecimento, trabalho levando o melhor para os meus clientes de forma justa e com excelência.</p>
+                    
+                    <p>Com anos de especialização e uma busca incessante pelas últimas tendências em Paris, Milão e Nova Iorque, eu me dedico a oferecer o que há de mais moderno em cortes, coloração e tratamentos capilares. Sinta-se em casa e permita-se viver a experiência <strong>Belle</strong>.</p>
+                    
+                    <a href="contato.html" class="btn-gold-outline">ENTRE EM CONTATO</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <footer id="footer-info"> 
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>Siga as Novidades</h4>
+                <p>Acompanhe meu trabalho de perto no Instagram.</p>
+                <a href="https://instagram.com/bmademoisellee" target="_blank" class="btn-instagram-footer">
+                    <i class="fab fa-instagram"></i> Siga-me Agora
+                </a>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Belle Mademoissele</h4>
+                <p>Um novo conceito de atendimento e bem-estar, fazendo com que a ida ao salão se torne um momento prazeroso.</p>
+                <p><strong>Estacionamento:</strong><br>Subterrâneo com Segurança</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Horário</h4>
+                <p>Terça a Sábado<br>09h às 19h</p>
+                <br>
+                <h4>Links</h4>
+                <ul>
+                     <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="sobre.html">Sobre Mim</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                 <h4>Contato Rápido</h4>
+                <p>R. Prudente de Moraes, 1021a - Vila Maristela, Pres. Prudente - SP, 19020-370</p>
+                <p>(18) 997546622</p>
+                <p>sbastos1@gmail.com</p>
+                </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2025 Belle Mademoissele. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script Menu Mobile
+        const toggleBtn = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        toggleBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>
