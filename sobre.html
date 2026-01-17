@@ -10,6 +10,7 @@
     <link rel="icon" href="https://png.pngtree.com/png-vector/20230322/ourlarge/pngtree-golden-luxury-logo-monogram-initial-letter-b-golden-decorative-royal-vector-png-image_50502028.jpg" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -17,9 +18,9 @@
         * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
         
         :root {
-            --bg-body: #080808;      /* Preto Profundo */
-            --bg-panel: #111111;      /* Cinza Quase Preto */
-            --text-gold: #D4AF37;     /* Dourado Metálico */
+            --bg-body: #080808;      
+            --bg-panel: #111111;      
+            --text-gold: #D4AF37;     
             --text-white: #FFFFFF;
             --text-grey: #888888;
             --whatsapp-green: #25D366;
@@ -51,7 +52,7 @@
         .section-padding { padding: 90px 0; }
         .text-center { text-align: center; }
         
-        /* --- BOTÕES (Idênticos ao Site) --- */
+        /* --- BOTÕES --- */
         .btn-whatsapp-hero {
             background-color: var(--whatsapp-green);
             color: #fff;
@@ -83,22 +84,30 @@
             letter-spacing: 2px;
             background: transparent;
             cursor: pointer;
+            /* CORREÇÃO DO BOTÃO: Inline-block + Margin Top */
+            display: inline-block; 
+            margin-top: 30px;
         }
         .btn-gold-outline:hover {
             background-color: var(--text-gold);
             color: #000;
         }
 
-        /* --- [HEADER CORRIGIDO] --- */
+        /* --- HEADER --- */
         header {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            padding: 10px 0; /* <-- Padding ajustado */
+            padding: 10px 0; 
             background: transparent;
+            transition: background 0.3s ease;
         }
+        header.menu-open {
+            background-color: #080808; 
+        }
+
         .nav-container {
             display: flex;
             justify-content: space-between;
@@ -122,7 +131,6 @@
             letter-spacing: 3px;
             text-transform: uppercase;
         }
-        /* --- Fim [LOGO CSS] --- */
         .nav-menu { display: flex; gap: 30px; }
         .nav-menu a {
             color: rgba(255,255,255,0.9);
@@ -134,41 +142,7 @@
         .nav-menu a:hover { color: var(--text-gold); }
         .mobile-toggle { display: none; color: var(--text-gold); font-size: 1.5rem; cursor: pointer; }
 
-        /* --- (Estilos Intro, Services Omitidos por Brevidade) --- */
-        
-        .intro-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background-color: var(--bg-body);
-        }
-        .intro-text {
-            padding: 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-        }
-        .intro-text h2 {
-            color: var(--text-gold);
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        .intro-text .btn-whatsapp-hero,
-        .intro-text .btn-gold-outline {
-            margin-top: 25px; 
-        }
-        
-        .services-section { background-color: var(--bg-panel); }
-        .section-header { margin-bottom: 60px; text-align: center; }
-        .section-header h2 { font-size: 2.5rem; color: var(--text-gold); margin-bottom: 10px; }
-        .services-card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        
-        /* --- FOOTER (Réplica) --- */
+        /* --- FOOTER --- */
         footer {
             background-color: #050505;
             border-top: 1px solid #1a1a1a;
@@ -200,7 +174,6 @@
         }
         .footer-col li a:hover { color: var(--text-gold); }
         
-        /* --- Estilo para o Botão Instagram no Rodapé --- */
         .btn-instagram-footer {
             display: block;
             width: 100%;
@@ -231,7 +204,32 @@
             font-size: 0.8rem;
         }
 
-        /* --- WHATSAPP FLUTUANTE --- */
+        /* --- ANIMAÇÕES (LOGO E WHATSAPP) --- */
+        
+        /* 1. Logo Luxo */
+        @keyframes luxuryEntrance {
+            0% { opacity: 0; transform: translateX(-30px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        .logo-container {
+            animation: luxuryEntrance 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            cursor: pointer;
+        }
+        .logo-container img { transition: transform 0.8s ease; }
+        .logo-text { transition: all 0.5s ease; }
+        
+        .logo-container:hover img { transform: scale(1.1) rotate(2deg); }
+        .logo-container:hover .logo-text {
+            color: #fff;
+            text-shadow: 0 0 15px #D4AF37, 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* 2. WhatsApp Pulse */
+        @keyframes pulseGold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -248,9 +246,9 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             z-index: 2000;
             transition: transform 0.3s;
+            animation: pulseGold 2s infinite;
         }
         .whatsapp-float:hover { transform: scale(1.1); }
-
 
         /* --- BANNER DE SUBPÁGINA --- */
         .subpage-banner {
@@ -274,7 +272,7 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* --- CONTEÚDO PÁGINA 'SOBRE' (COM CORREÇÃO DO QUADRADO) --- */
+        /* --- CONTEÚDO PÁGINA 'SOBRE' --- */
         .about-me-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -300,6 +298,8 @@
         }
         
         .about-me-content .intro-text {
+            display: flex;
+            flex-direction: column;
             align-items: flex-start; 
             text-align: left; 
             padding: 0; 
@@ -310,22 +310,21 @@
             margin-bottom: 20px;
             line-height: 1.2;
         }
-
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr; 
-            gap: 50px;
+        .about-me-content .intro-text p {
+            margin-bottom: 15px;
         }
 
-        /* --- RESPONSIVO --- */
+        /* --- RESPONSIVO (CORRIGIDO) --- */
         @media (max-width: 992px) {
-            .intro-section, .intro-section.reverse { grid-template-columns: 1fr; }
-            .intro-text { padding: 60px 20px; text-align: center; align-items: center; }
-            
+            /* Logo Fix */
+            .logo-container { gap: 10px; }
+            .logo-container img { height: 50px; }
+            .logo-text { font-size: 1.1rem; white-space: nowrap; letter-spacing: 1px; }
+
+            /* Mobile Menu Fix */
             .nav-menu {
                 position: absolute;
-                top: 80px; 
+                top: 100%;
                 left: 0;
                 width: 100%;
                 background: #000;
@@ -333,10 +332,11 @@
                 padding: 30px;
                 display: none;
                 text-align: center;
-                border-bottom: 1px solid #333;
+                border-top: 1px solid #222;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             }
             .nav-menu.active { display: flex; }
-            .mobile-toggle { display: block; }
+            .mobile-toggle { display: block; font-size: 1.8rem; }
 
             .subpage-banner h1 { font-size: 2.5rem; }
             .about-me-content { grid-template-columns: 1fr; } 
@@ -352,18 +352,6 @@
                 width: 80%; 
                 padding-bottom: 80%; 
             }
-            
-            .contact-grid { grid-template-columns: 1fr; }
-            .contact-info { margin-top: 40px; }
-
-            /* --- [LOGO CSS] Responsivo --- */
-            .logo-container img {
-                height: 90px; 
-            }
-            .logo-container .logo-text {
-                font-size: 1.5rem; 
-            }
-            /* --- Fim [LOGO CSS] --- */
         }
     </style>
 </head>
@@ -392,25 +380,25 @@
     </header>
 
     <section class="subpage-banner">
-        <h1>Sobre Mim</h1>
+        <h1 data-aos="fade-down">Sobre Mim</h1>
     </section>
 
     <section class="section-padding">
         <div class="container">
             <div class="about-me-content">
                 
-                <div class="about-image">
+                <div class="about-image" data-aos="zoom-in">
                     <img src="img3.jpg" alt="Retrato Belle Mademoissele">
                 </div>
                 
-                <div class="intro-text">
+                <div class="intro-text" data-aos="fade-up">
                     <h2>Minha História & Filosofia</h2>
                     <p>Desde jovem, eu soube que minha vocação era realçar a beleza. O <strong>Belle Mademoissele</strong> não é apenas um negócio; é a materialização de um sonho. Aqui, cada detalhe foi pensado para criar uma atmosfera de luxo e acolhimento, onde a técnica e a arte se encontram para criar resultados únicos.</p>
                     <p>Minha filosofia é que a verdadeira beleza vem de dentro, e o meu papel é apenas revelá-la. Eu acredito em um atendimento ultra-personalizado, ouvindo atentamente os desejos de cada cliente e traduzindo sua personalidade em um visual autêntico, sofisticado e que eleve sua autoestima.</p>
                     
                     <p>Ética e profissionalismo são os principais lemas da minha carreira. Sempre trabalhando com os melhores produtos e buscando conhecimento, trabalho levando o melhor para os meus clientes de forma justa e com excelência.</p>
                     
-                    <p>Com anos de especialização e uma busca incessante pelas últimas tendências, eu me dedico a oferecer o que há de mais moderno em cortes, coloração e tratamentos capilares. Sinta-se em casa e permita-se viver a experiência <strong>Belle</strong>.</p>
+                    <p>Com anos de especialização e uma busca incessante pelas últimas tendências em Paris, Milão e Nova Iorque, eu me dedico a oferecer o que há de mais moderno em cortes, coloração e tratamentos capilares. Sinta-se em casa e permita-se viver a experiência <strong>Belle</strong>.</p>
                     
                     <a href="contato.html" class="btn-gold-outline">ENTRE EM CONTATO</a>
                 </div>
@@ -419,7 +407,7 @@
         </div>
     </section>
     
-    <footer id="footer-info"> 
+    <footer id="footer-info" data-aos="fade-in"> 
         <div class="footer-container">
             <div class="footer-col">
                 <h4>Siga as Novidades</h4>
@@ -432,6 +420,7 @@
             <div class="footer-col">
                 <h4>Belle Mademoissele</h4>
                 <p>Um novo conceito de atendimento e bem-estar, fazendo com que a ida ao salão se torne um momento prazeroso.</p>
+                <p><strong>Estacionamento:</strong><br>Subterrâneo com Segurança</p>
             </div>
             
             <div class="footer-col">
@@ -461,13 +450,29 @@
     </footer>
 
     <script>
-        // Script Menu Mobile
         const toggleBtn = document.querySelector('.mobile-toggle');
         const navMenu = document.querySelector('.nav-menu');
+        const header = document.querySelector('header');
 
         toggleBtn.addEventListener('click', () => {
             navMenu.classList.toggle('active');
+            header.classList.toggle('menu-open');
         });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                header.classList.remove('menu-open');
+            });
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1200, 
+        once: true,
+        offset: 100,
+      });
     </script>
 
 </body>
