@@ -7,19 +7,19 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link rel="icon" href="https://png.pngtree.com/png-vector/20230322/ourlarge/pngtree-golden-luxury-logo-monogram-initial-letter-b-golden-decorative-royal-vector-png-image_50502028.jpg" type="image/png">
+    <link rel="icon" href="https://png.pngtree.com/png-vector/20230322/ourlarge/pngtree-golden-luxury-logo-monogram-initial-letter-b-golden-decorative-royal-vector-png-image_50502028.jpg" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- RESET GERAL --- */
         * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
         
         :root {
-            --bg-body: #080808;      /* Preto Profundo */
-            --bg-panel: #111111;      /* Cinza Quase Preto */
-            --text-gold: #D4AF37;     /* Dourado Metálico */
+            --bg-body: #080808;      
+            --bg-panel: #111111;      
+            --text-gold: #D4AF37;     
             --text-white: #FFFFFF;
             --text-grey: #888888;
             --whatsapp-green: #25D366;
@@ -51,7 +51,7 @@
         .section-padding { padding: 90px 0; }
         .text-center { text-align: center; }
         
-        /* --- BOTÕES (Idênticos ao Site) --- */
+        /* --- BOTÕES --- */
         .btn-whatsapp-hero {
             background-color: var(--whatsapp-green);
             color: #fff;
@@ -83,13 +83,16 @@
             letter-spacing: 2px;
             background: transparent;
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         .btn-gold-outline:hover {
             background-color: var(--text-gold);
             color: #000;
         }
 
-        /* --- HEADER (Transparente e Flutuante) --- */
+        /* --- HEADER & NAV --- */
         header {
             position: absolute;
             top: 0;
@@ -98,7 +101,12 @@
             z-index: 1000;
             padding: 10px 0; 
             background: transparent;
+            transition: background 0.3s ease;
         }
+        header.menu-open {
+            background-color: #080808; 
+        }
+
         .nav-container {
             display: flex;
             justify-content: space-between;
@@ -133,7 +141,7 @@
         .nav-menu a:hover { color: var(--text-gold); }
         .mobile-toggle { display: none; color: var(--text-gold); font-size: 1.5rem; cursor: pointer; }
 
-        /* --- SERVIÇOS (Cards com Imagens) --- */
+        /* --- SERVIÇOS --- */
         .services-section { background-color: var(--bg-panel); }
         
         .section-header { margin-bottom: 60px; text-align: center; }
@@ -159,10 +167,10 @@
         .service-card-image {
             height: 300px; 
             overflow: hidden;
-            background: #000; /* Fundo preto para o player de vídeo */
+            background: #000; 
         }
         .service-card-image img,
-        .service-card-image video { /* [CSS CORRIGIDO] */
+        .service-card-image video { 
             width: 100%;
             height: 100%;
             object-fit: cover; 
@@ -170,7 +178,7 @@
         }
 
         .service-card:hover .service-card-image img,
-        .service-card:hover .service-card-image video { /* [CSS CORRIGIDO] */
+        .service-card:hover .service-card-image video { 
             transform: scale(1.05);
         }
         
@@ -202,12 +210,12 @@
             color: var(--text-gold);
         }
 
+        /* --- FOOTER --- */
         footer {
             background-color: #050505;
             border-top: 1px solid #1a1a1a;
             padding-top: 70px;
         }
-        
         .footer-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -216,7 +224,6 @@
             margin: 0 auto 50px auto;
             padding: 0 20px;
         }
-        
         .footer-col h4 {
             color: var(--text-gold);
             font-size: 1rem;
@@ -227,7 +234,6 @@
             padding-bottom: 10px;
             display: inline-block;
         }
-        
         .footer-col p, .footer-col li a {
             color: #777;
             font-size: 0.9rem;
@@ -236,7 +242,6 @@
         }
         .footer-col li a:hover { color: var(--text-gold); }
         
-        /* --- Estilo para o Botão Instagram no Rodapé --- */
         .btn-instagram-footer {
             display: block;
             width: 100%;
@@ -267,7 +272,32 @@
             font-size: 0.8rem;
         }
 
-      
+        /* --- ANIMAÇÕES (LOGO E WHATSAPP) --- */
+        
+        /* 1. Logo Luxo */
+        @keyframes luxuryEntrance {
+            0% { opacity: 0; transform: translateX(-30px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        .logo-container {
+            animation: luxuryEntrance 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            cursor: pointer;
+        }
+        .logo-container img { transition: transform 0.8s ease; }
+        .logo-text { transition: all 0.5s ease; }
+        
+        .logo-container:hover img { transform: scale(1.1) rotate(2deg); }
+        .logo-container:hover .logo-text {
+            color: #fff;
+            text-shadow: 0 0 15px #D4AF37, 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* 2. WhatsApp Pulse */
+        @keyframes pulseGold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -284,11 +314,10 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             z-index: 2000;
             transition: transform 0.3s;
+            animation: pulseGold 2s infinite;
         }
         .whatsapp-float:hover { transform: scale(1.1); }
 
-
-   
         .subpage-banner {
             height: 40vh; 
             min-height: 250px;
@@ -310,31 +339,17 @@
             font-family: 'Playfair Display', serif;
         }
         
-       
-        .about-me-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr; 
-            gap: 50px;
-        }
-
-
+        /* --- RESPONSIVO (CORRIGIDO) --- */
         @media (max-width: 992px) {
-            .hero h1 { font-size: 3rem; }
-            .welcome-text { font-size: 2.5rem; }
-            
-            .intro-section, .intro-section.reverse { grid-template-columns: 1fr; }
-            .intro-text { padding: 60px 20px; text-align: center; align-items: center; }
-            .intro-img-1, .intro-img-2 { min-height: 300px; }
-            
+            /* Logo Fix */
+            .logo-container { gap: 10px; }
+            .logo-container img { height: 50px; }
+            .logo-text { font-size: 1.1rem; white-space: nowrap; letter-spacing: 1px; }
+
+            /* Mobile Menu Fix */
             .nav-menu {
                 position: absolute;
-                top: 80px; 
+                top: 100%;
                 left: 0;
                 width: 100%;
                 background: #000;
@@ -342,24 +357,13 @@
                 padding: 30px;
                 display: none;
                 text-align: center;
-                border-bottom: 1px solid #333;
+                border-top: 1px solid #222;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             }
             .nav-menu.active { display: flex; }
-            .mobile-toggle { display: block; }
+            .mobile-toggle { display: block; font-size: 1.8rem; }
 
- 
             .subpage-banner h1 { font-size: 2.5rem; }
-            .about-me-content { grid-template-columns: 1fr; }
-            .contact-grid { grid-template-columns: 1fr; }
-
-            /* --- [LOGO CSS] Responsivo --- */
-            .logo-container img {
-                height: 90px; 
-            }
-            .logo-container .logo-text {
-                font-size: 1.5rem; 
-            }
-            /* --- Fim [LOGO CSS] --- */
         }
     </style>
 </head>
@@ -388,19 +392,19 @@
     </header>
 
     <section class="subpage-banner">
-        <h1>Meus Serviços</h1>
+        <h1 data-aos="fade-down">Meus Serviços</h1>
     </section>
     
     <section id="services" class="services-section section-padding">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-aos="fade-up">
                 <h2>Serviços em Destaque</h2>
                 <p>Descubra o tratamento ideal para você</p>
             </div>
             
             <div class="services-card-grid">
                 
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="0">
                     <div class="service-card-image">
                         <img src="img4.jpg" alt="Cabelo e Coloração">
                     </div>
@@ -411,7 +415,7 @@
                     </div>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="150">
                     <div class="service-card-image">
                         <img src="img6.jpg" alt="Maquiagem e Penteados">
                     </div>
@@ -422,7 +426,7 @@
                     </div>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-card-image">
                         <img src="img5.jpg" alt="Tratamentos e Estética">
                     </div>
@@ -433,7 +437,7 @@
                     </div>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="0">
                     <div class="service-card-image">
                         <video src="video.mp4" controls loop muted>
                             Seu navegador não suporta o player de vídeo.
@@ -445,7 +449,7 @@
                     </div>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="150">
                     <div class="service-card-image">
                         <video src="video3.mp4" controls loop muted>
                             Seu navegador não suporta o player de vídeo.
@@ -457,7 +461,7 @@
                     </div>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-card-image">
                         <video src="video2.mp4" controls loop muted>
                             Seu navegador não suporta o player de vídeo.
@@ -473,7 +477,7 @@
         </div>
     </section>
 
-    <footer id="footer-info"> 
+    <footer id="footer-info" data-aos="fade-in"> 
         <div class="footer-container">
             <div class="footer-col">
                 <h4>Siga as Novidades</h4>
@@ -486,6 +490,7 @@
             <div class="footer-col">
                 <h4>Belle Mademoissele</h4>
                 <p>Um novo conceito de atendimento e bem-estar, fazendo com que a ida ao salão se torne um momento prazeroso.</p>
+                <p><strong>Estacionamento:</strong><br>Subterrâneo com Segurança</p>
             </div>
             
             <div class="footer-col">
@@ -515,13 +520,29 @@
     </footer>
 
     <script>
- 
         const toggleBtn = document.querySelector('.mobile-toggle');
         const navMenu = document.querySelector('.nav-menu');
+        const header = document.querySelector('header');
 
         toggleBtn.addEventListener('click', () => {
             navMenu.classList.toggle('active');
+            header.classList.toggle('menu-open');
         });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                header.classList.remove('menu-open');
+            });
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1200, 
+        once: true,
+        offset: 100,
+      });
     </script>
 
 </body>
